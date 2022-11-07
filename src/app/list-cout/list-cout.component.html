@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<div class="container">
+  <span>Type</span>
+  <span>Catégorie</span>
+  <span>Dénomination</span>
+  <span>Unité</span>
+  <span>Prix Unitaire</span>
+  <span></span>
+  <span></span>
+</div>
+  <div>
+    <app-cout *ngFor="let cout of listCout" [cout]="cout" (deleteCout)="getAll()" ></app-cout>
+  </div>

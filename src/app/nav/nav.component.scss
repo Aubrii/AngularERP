@@ -1,0 +1,14 @@
+.container{
+  position: fixed;
+  top:0;
+  width: 5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: lightgreen;
+    .btnMenu{
+      display: flex;
+      flex-direction: column;
+    }
+}
