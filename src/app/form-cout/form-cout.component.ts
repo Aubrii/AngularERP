@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./form-cout.component.scss']
 })
 export class FormCoutComponent implements OnInit {
-  @Input() updateCout!: FormCoutComponent
+  // @Input() updateCout!: FormCoutComponent
   public  myFormGroup: FormGroup;
   textButton!:string;
+  titreForm!:string;
 
   constructor(private  formBuilder: FormBuilder, private coutService : CoutService,
               private route: ActivatedRoute) {
@@ -55,6 +56,7 @@ export class FormCoutComponent implements OnInit {
       const coutID = +params['id']
       if(!isNaN(coutID)) {
         this.textButton = 'Modifier le cout'
+        this.titreForm = 'Modification du cout'
         this.coutService.getById(coutID).subscribe(data => {
           // Assuming res has a structure like:
           data = {
@@ -73,6 +75,7 @@ export class FormCoutComponent implements OnInit {
         });
       }else{
         this.textButton = 'Creer un nouveau cout'
+        this.titreForm = "Création d'un du cout"
         this.formBuilder.group({
           type: [],
           categorie: [],

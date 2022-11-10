@@ -10,15 +10,15 @@ import {CoutService} from "../cout.service";
 })
 export class CoutComponent implements OnInit {
 @Input() cout!: Cout;
-@Output() deleteCout: EventEmitter<any> = new EventEmitter()
+// @Output() deleteCout: EventEmitter<any> = new EventEmitter()
+
 
   constructor(private coutService: CoutService) { }
   ngOnInit(): void {
   }
 
   delete():void{
-    this.coutService.deleteByID(this.cout.id).subscribe(() => this.deleteCout.emit())
-
+    // this.coutService.deleteByID(this.cout.id).subscribe(() => this.deleteCout.emit())
   }
 
 }
