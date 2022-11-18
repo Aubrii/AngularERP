@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'erp-biopura';
+  private $event: any;
+
+  onActivate($event: any) {
+    this.$event = $event;
+    console.log('test emit')
+  }
 }

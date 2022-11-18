@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OuvrageService} from "../ouvrage.service";
 import {Ouvrage} from "../ouvrage.model";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -9,8 +10,9 @@ import {Ouvrage} from "../ouvrage.model";
   styleUrls: ['./list-ouvrage.component.scss']
 })
 export class ListOuvrageComponent implements OnInit {
-  listOuvrage!: Ouvrage[];
+  @Input() listOuvrage!: Ouvrage[];
   columnsToDisplay = ["designation","benefice","aleas", "unite","ratio", "uRatio","prixUnitaire", "boutons"];
+
 
   constructor(private ouvrageService: OuvrageService) { }
 
@@ -28,5 +30,6 @@ export class ListOuvrageComponent implements OnInit {
   delete(id: number): void{
     this.ouvrageService.deleteByID(id).subscribe(() => this.ngOnInit())
   }
+
 
 }

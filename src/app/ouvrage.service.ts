@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-
 const baseUrl = 'http://localhost:8080/api/ouvrage';
 
 @Injectable({
@@ -32,6 +31,9 @@ export class OuvrageService {
   addCoutOuvrage(coutId:number, ouvrageId:number) :Observable<any> {
     console.log(`${baseUrl}/add/${coutId}/${ouvrageId}`)
     return this.http.get(`${baseUrl}/add/${coutId}/${ouvrageId}`);
+  }
+  getSum(ouvrageId:number): Observable<any>{
+    return this.http.get(`${baseUrl}/test/sum/${ouvrageId}`)
   }
 
 

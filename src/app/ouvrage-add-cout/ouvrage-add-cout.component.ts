@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Cout} from "../cout.model";
 import {CoutService} from "../cout.service";
 import {OuvrageService} from "../ouvrage.service";
+
 
 @Component({
   selector: 'app-ouvrage-add-cout',
@@ -11,11 +12,17 @@ import {OuvrageService} from "../ouvrage.service";
 })
 export class OuvrageAddCoutComponent implements OnInit {
 
-  listCout!:Cout[]
+
+  @Input() listCout!:Cout[]
   coutChecked :number[] = [];
   ouvrageId!:number
   columnsToDisplay = ["checkBox","type","categorie","designation", "unite", "prixUnitaire", "fournisseur"];
-  constructor(private route: ActivatedRoute, private coutService: CoutService, private ouvrageService: OuvrageService) { }
+
+  constructor(private route: ActivatedRoute, private coutService: CoutService,
+              private ouvrageService: OuvrageService) { }
+
+
+
 
   ngOnInit(): void {
   this.getAll()
@@ -26,6 +33,10 @@ export class OuvrageAddCoutComponent implements OnInit {
       this.listCout = data
     })
   }
+
+
+
+
   addCoutOuvrage(){
     this.route.params.subscribe(params =>{
       this.ouvrageId = +params['id'];
@@ -35,13 +46,19 @@ export class OuvrageAddCoutComponent implements OnInit {
       for (let val of this.coutChecked) {
         console.log(val);
         console.log('valeur')
-        this.ouvrageService.addCoutOuvrage(val,this.ouvrageId).subscribe(this.getAll)
+        this.ouvrageService.addCoutOuvrage(val,this.ouvrageId).subscribe()
         console.log('OUVRAGE AJOUT COUT')
+
       }
+
       // this.ngOnInit()
+
+    },error => {
 
     } )
   }
+
+
 
   onCheck(idCout: number):void {
     if(this.coutChecked.indexOf(idCout) !== -1){

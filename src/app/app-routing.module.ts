@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'ouvrage/:id', component: FormOuvrageComponent, },
   { path: 'ouvrage', component: FormOuvrageComponent, },
   { path: 'ouvrageDetail/:id', component: DetailOuvrageComponent, },
-  {path: '', component: HeaderComponent},
-  {path: 'listCout', component: ListCoutComponent},
-  {path: 'listOuvrage', component: ListOuvrageComponent},
-  {path: 'ajoutCout/:id', component: OuvrageAddCoutComponent}
+  { path: '', component: HeaderComponent},
+  { path: 'listCout', component: ListCoutComponent},
+  { path: 'listOuvrage', component: ListOuvrageComponent},
+  { path: 'ajoutCout/:id', component: OuvrageAddCoutComponent}
 
 ];
 

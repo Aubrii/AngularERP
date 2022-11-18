@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OuvrageService} from "../ouvrage.service";
 import {Ouvrage} from "../ouvrage.model";
 import {ActivatedRoute} from "@angular/router";
-import {map} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-detail-ouvrage',
@@ -10,9 +10,10 @@ import {map} from "rxjs";
   styleUrls: ['./detail-ouvrage.component.scss']
 })
 export class DetailOuvrageComponent implements OnInit {
-  ouvrage!:Ouvrage
+  @Input() ouvrage!:Ouvrage
+  prixOuvrage!:number
   ouvrageID!:number
-  prixUnitaire!:number
+
   constructor(private ouvrageService: OuvrageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,25 +22,20 @@ export class DetailOuvrageComponent implements OnInit {
     this.ouvrageService.getById(this.ouvrageID)
     } )
     this.getById()
-    // this.tes()
+    this.getSum()
+  }
+
+  getSum():void{
+  this.ouvrageService.getSum(this.ouvrageID).subscribe(data =>{
+    console.log(data['totalPrix']);
+    this.prixOuvrage = data.totalPrix;
+    console.log('prix unitaire ouvrage: ' + this.prixOuvrage)
+  })
   }
 
   getById():void{
-  console.log("tettstestetstset<")
     this.ouvrageService.getById(this.ouvrageID).subscribe(data =>{ this.ouvrage = data;
-    // console.log(data)
-
-
     });
   }
-  // tes():void{
-  //   console.log("fddfglkgfdjkgfdjkdgfkjdgfkj")
-  //   const test = this.ouvrageService.getById(this.ouvrageID).pipe(map(ouvrage =>{
-  //     ouvrage.tap''
-  //   }))
-  //   test.subscribe(data => console.log(data))
-  // }
-
-
 
 }
