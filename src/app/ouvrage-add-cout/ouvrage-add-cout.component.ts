@@ -29,9 +29,9 @@ export class OuvrageAddCoutComponent implements OnInit {
     this.route.params.subscribe(params=>this.ouvrageId = +params['id'])
   }
   getAll(): void{
-    this.coutService.getAll().subscribe(data =>{
-      this.listCout = data
-    })
+    // this.coutService.getAll().subscribe(data =>{
+    //   this.listCout = data
+    // })
   }
 
 

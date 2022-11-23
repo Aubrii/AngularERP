@@ -58,6 +58,7 @@
         <p>{{ouvrage.fournisseur}}</p>
       </div>
     </div>
+    <p>dffds</p>
   </mat-card-title-group>
 <!--    <div class="detailList">-->
 <!--      <div class="detail">-->
@@ -89,7 +90,7 @@
 
 </mat-card>
 
-  <ng-container *ngIf="ouvrage.cout.length; then someContent else otherContent"></ng-container>
+<!--  <ng-container *ngIf="ouvrage.cout.length; then someContent else otherContent"></ng-container>-->
 
   <ng-template #someContent >
     <div>
@@ -136,7 +137,7 @@
 
 
 
-  <ng-template #otherContent >
+<!--  <ng-template #otherContent >-->
     <div>
     <mat-card class="example-card">
       <mat-card-title-group class="group">
@@ -149,7 +150,7 @@
     </mat-card>
 
   </div>
-  </ng-template>
+<!--  </ng-template>-->
 
 </div>
 

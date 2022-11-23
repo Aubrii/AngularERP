@@ -11,6 +11,7 @@ import {Cout} from "../cout.model";
 })
 export class ListCoutComponent implements OnInit {
   @Input() listCout!: Cout[]
+  EntrepriseId = 1
   columnsToDisplay = ["type","categorie","designation", "unite", "prixUnitaire", "boutons"];
 
 
@@ -18,12 +19,13 @@ export class ListCoutComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getAll()
+    this.getAll(this.EntrepriseId)
+
     }
 
 
-   getAll():void{
-    this.coutService.getAll().subscribe(data => {
+  getAll(EntrepriseId:any):void{
+    this.coutService.getAll(EntrepriseId).subscribe(data => {
       this.listCout = data;
       console.log(data)
     });
